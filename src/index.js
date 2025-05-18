@@ -19,6 +19,10 @@ function generateRecipe(event) {
     "You are a professional Caribbean cuisine Chef with recognised and celerated recipes. Generate your best recipes in a basic HTML format without including the words 'HTML' and the word 'Caribbean'. Make sure to follow the user instructions";
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+  let recipeElement = document.querySelector("#recipe");
+  recipeElement.classList.remove("hidden");
+  recipeElement.innerHTML = `<div class= "generating"> ⏳Whipping up something delicious for you with ${instructionsInput.value}!</div>`;
+
   console.log("Generating recipe");
   console.log(`Prompt: ${prompt}`);
   console.log(`Context: ${context}`);
