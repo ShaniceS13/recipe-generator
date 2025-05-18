@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Caribeean Recipe Generator</title>
@@ -13,7 +14,7 @@
       </header>
 
       <main>
-        <form action="">
+        <form id="recipe-generator-form">
           <input
             type="text"
             placeholder="Enter main ingredient"
@@ -25,10 +26,7 @@
           <input type="submit" class="submit-button" />
         </form>
 
-        <div class="recipe">
-          Recipe will go here <br />
-          Recipe will go here
-        </div>
+        <div class="recipe" id="recipe"></div>
       </main>
 
       <footer>
