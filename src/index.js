@@ -1,12 +1,29 @@
-function generateRecipe(event) {
-  event.preventDefault();
-
+function displayRecipe(response) {
+  console.log("recipe generated");
   new Typewriter("#recipe", {
-    strings: "Recipe here",
+    strings: response.data.answer,
     autoStart: true,
     delay: 2,
     cursor: "",
   });
+}
+
+function generateRecipe(event) {
+  event.preventDefault();
+
+  let instructionsInput = document.querySelector("#user-instructions");
+
+  let apiKey = "5aaf35163dab1f6084ofbdbf0bt4edf4";
+  let prompt = `User instructions: Generate a caribbean recipe with ${instructionsInput.value}`;
+  let context =
+    "You are a professional Caribbean cuisine Chef with recognised and celerated recipes. Generate your best recipes in a basic HTML format without including the words 'HTML' and the word 'Caribbean'. Make sure to follow the user instructions";
+  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  console.log("Generating recipe");
+  console.log(`Prompt: ${prompt}`);
+  console.log(`Context: ${context}`);
+
+  axios.get(apiUrl).then(displayRecipe);
 }
 
 let recipeFormElement = document.querySelector("#recipe-generator-form");
